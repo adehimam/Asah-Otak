@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fase 10: Bikin Aplikasi APK — Belajar Claude</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>:root { --fase-color: #34d399; }</style>
+</head>
+<body data-fase="fase10">
+  <nav>
+    <a href="index.html" class="logo">⚡ Belajar Claude</a>
+    <a href="index.html" class="nav-back">← Kembali ke Roadmap</a>
+  </nav>
+  <div class="top-progress"><div class="top-progress-fill"></div></div>
+  <div class="page-wrap">
+
+    <div class="fase-header">
+      <div class="fase-badge" style="color:#34d399;border-color:rgba(52,211,153,0.3);background:rgba(52,211,153,0.08)">📱 FASE 10</div>
+      <h1 class="fase-title">Bikin Aplikasi APK (Android)</h1>
+      <p class="fase-sub">APK itu aplikasi yang jalan di HP Android. Ada cara yang susah dan ada cara yang jauh lebih mudah — kita pelajari yang mudah dulu.</p>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(52,211,153,0.15);color:#34d399">10.1</div>
+      <h2>Apa itu APK dan Cara Kerjanya?</h2>
+      <p>APK (Android Package Kit) adalah format file instalasi aplikasi Android — kayak .exe-nya Windows tapi untuk HP Android. Setiap app yang kamu download dari Play Store, di dalamnya ada file APK.</p>
+      <p>Sistem operasi Android dibangun di atas Linux dan menjalankan aplikasi dalam "sandbox" — tiap app punya ruangnya sendiri dan tidak bisa sembarangan akses data app lain.</p>
+      <div class="callout tip">💡 <strong>Analogi:</strong> APK itu kayak kontrakan. Tiap app dapat kamar sendiri (sandbox), ada aturan yang harus dipatuhi (permissions), dan pemilik gedung (Android OS) yang ngatur semuanya. Kalau app mau akses kamera atau GPS, harus minta izin dulu ke penghuni (user).</div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Tanya Claude</div>
+        <pre>Jelaskan cara kerja APK Android dalam bahasa sederhana. Apa itu sandbox, permissions, dan kenapa app harus minta izin untuk akses kamera/lokasi?</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Tanya Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(52,211,153,0.15);color:#34d399">10.2</div>
+      <h2>Komponen Utama Aplikasi Android</h2>
+      <p>Aplikasi Android "native" punya beberapa komponen utama yang perlu diketahui:</p>
+      <p><strong>Activity</strong> — satu layar tampilan. Setiap halaman di app (home, profil, settings) itu masing-masing satu Activity.</p>
+      <p><strong>Layout (XML)</strong> — template tampilan tiap Activity. Mirip HTML tapi pakai format XML.</p>
+      <p><strong>AndroidManifest.xml</strong> — "KTP"-nya aplikasi. Berisi nama app, versi, permissions yang dibutuhkan, dan konfigurasi penting lainnya.</p>
+      <p><strong>Resources</strong> — semua aset seperti gambar, ikon, string teks, warna — ditaruh di folder res/.</p>
+      <div class="callout info">ℹ️ Bahasa resmi Android adalah <strong>Kotlin</strong> (modern) dan <strong>Java</strong> (lama). Tapi buat pemula yang udah bisa HTML/JS, ada alternatif yang jauh lebih mudah — kita bahas di poin berikutnya!</div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Tanya Claude</div>
+        <pre>Jelaskan komponen utama aplikasi Android (Activity, Layout, Manifest) pakai analogi yang mudah dipahami. Bedakan juga antara Kotlin vs Java untuk pemula.</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Tanya Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(52,211,153,0.15);color:#34d399">10.3</div>
+      <h2>Cara Termudah Bikin APK: Capacitor</h2>
+      <p><strong>Capacitor</strong> (dari Ionic) adalah cara paling mudah buat developer web untuk bikin APK. Konsepnya sama kayak Electron tapi untuk mobile: web app HTML/CSS/JS kamu "dibungkus" jadi APK.</p>
+      <p>Alurnya: Bikin web app biasa → Install Capacitor → Tambah platform Android → Build → Dapat file APK.</p>
+      <p>Ini cara yang dipakai jutaan developer, termasuk banyak app di Play Store yang sebenernya "cuma" web app dibungkus Capacitor.</p>
+      <div class="callout tip">💡 <strong>Alternatif lain:</strong> <strong>React Native</strong> — bikin app yang beneran "native" tapi pakai JavaScript. Lebih kompleks dari Capacitor tapi performa lebih baik. <strong>Flutter</strong> — pakai bahasa Dart, dari Google, performa sangat bagus tapi butuh belajar bahasa baru.</div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Tanya Claude</div>
+        <pre>Aku punya web app HTML/CSS/JS sederhana. Aku mau convert jadi APK Android pakai Capacitor. Jelaskan langkah-langkah dari awal sampai dapat file .apk, untuk pemula yang belum pernah pakai Android Studio.</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Coba Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(52,211,153,0.15);color:#34d399">10.4</div>
+      <h2>Android Studio: IDE Resmi Android</h2>
+      <p><strong>Android Studio</strong> adalah software resmi dari Google untuk bikin aplikasi Android. Ini yang dipakai kalau mau bikin app native Kotlin/Java.</p>
+      <p>Kelebihannya: akses penuh ke semua fitur Android, performa optimal, dukungan penuh dari Google.</p>
+      <p>Kekurangannya buat pemula: berat (butuh RAM minimal 8GB), learning curve tinggi, dan perlu belajar Kotlin/Java dari nol.</p>
+      <div class="callout warn">⚠️ <strong>Jujur ya sob:</strong> Android Studio + Kotlin itu jalur yang panjang. Kalau tujuan kamu bikin app fungsional dengan cepat, Capacitor jauh lebih praktis. Android Studio native cocok kalau kamu serius mau jadi Android Developer profesional.</div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Tanya Claude</div>
+        <pre>Aku pemula yang ingin bikin aplikasi Android. Mana yang lebih cocok untuk aku: Capacitor (bungkus web app) atau belajar Kotlin di Android Studio dari nol? Pertimbangkan waktu belajar dan tujuan jangka pendek.</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Tanya Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(52,211,153,0.15);color:#34d399">10.5</div>
+      <h2>Distribusi APK: Play Store vs Direct Install</h2>
+      <p>APK yang udah jadi bisa didistribusikan dua cara:</p>
+      <p><strong>Direct Install (Sideload)</strong> — kirim file .apk langsung ke user via WhatsApp, Drive, atau link download. User perlu aktifkan "Install from unknown sources" di HP-nya. Gratis, tapi tidak ada sistem update otomatis.</p>
+      <p><strong>Google Play Store</strong> — cara resmi. User tinggal search dan install kayak app biasa. Ada proses review dari Google (1–3 hari) dan biaya pendaftaran developer $25 (sekali bayar seumur hidup).</p>
+      <div class="callout tip">💡 <strong>Rekomendasi:</strong> Mulai dengan direct install dulu untuk testing dan feedback dari orang-orang terdekat. Kalau app-nya udah matang dan siap publik, baru daftar ke Play Store.</div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Tanya Claude</div>
+        <pre>Aku mau distribusikan APK buatan sendiri ke Play Store. Apa saja syarat dan langkah-langkahnya? Berapa biaya dan berapa lama proses review-nya?</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Tanya Sekarang</a>
+      </div>
+    </div>
+
+    <div class="checklist-wrap">
+      <div class="checklist-title">✅ Progress Kamu — Fase 10</div>
+      <div class="check-item"><input type="checkbox" id="c1"><label for="c1">Aku paham apa itu APK dan konsep sandbox Android</label></div>
+      <div class="check-item"><input type="checkbox" id="c2"><label for="c2">Aku ngerti komponen utama app Android: Activity, Layout, Manifest</label></div>
+      <div class="check-item"><input type="checkbox" id="c3"><label for="c3">Aku tau cara convert web app jadi APK pakai Capacitor</label></div>
+      <div class="check-item"><input type="checkbox" id="c4"><label for="c4">Aku paham kapan pakai Capacitor vs Android Studio native</label></div>
+      <div class="check-item"><input type="checkbox" id="c5"><label for="c5">Aku tau cara distribusi APK: direct install vs Play Store</label></div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>
+      <div class="progress-text">0 dari 5 poin selesai</div>
+    </div>
+
+    <div class="quiz-wrap">
+      <div class="quiz-title">🧩 Quiz — Fase 10</div>
+      <div class="quiz-q" data-correct="2">
+        <p>1. APK adalah singkatan dari?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Application Programming Kit</button>
+          <button class="quiz-opt">Android Play Key</button>
+          <button class="quiz-opt">Android Package Kit</button>
+          <button class="quiz-opt">App Production Kit</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="0">
+        <p>2. Dalam aplikasi Android, "Activity" itu adalah?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Satu layar tampilan dalam aplikasi</button>
+          <button class="quiz-opt">File konfigurasi aplikasi</button>
+          <button class="quiz-opt">Database penyimpanan data</button>
+          <button class="quiz-opt">Ikon aplikasi</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="1">
+        <p>3. Capacitor digunakan untuk?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Membuat tampilan Android yang native</button>
+          <button class="quiz-opt">Mengubah web app HTML/JS menjadi APK Android</button>
+          <button class="quiz-opt">Upload app ke Play Store</button>
+          <button class="quiz-opt">Testing aplikasi di emulator</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="3">
+        <p>4. Berapa biaya pendaftaran Google Play Developer (sekali bayar)?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Gratis</button>
+          <button class="quiz-opt">$10 per tahun</button>
+          <button class="quiz-opt">$100 per aplikasi</button>
+          <button class="quiz-opt">$25 sekali seumur hidup</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="0">
+        <p>5. Untuk pemula yang ingin cepat punya APK fungsional, pilihan paling praktis adalah?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Capacitor — bungkus web app yang sudah ada</button>
+          <button class="quiz-opt">Belajar Kotlin dari nol di Android Studio</button>
+          <button class="quiz-opt">Langsung daftar ke Play Store dulu</button>
+          <button class="quiz-opt">Pakai Java karena lebih lama dan stabil</button>
+        </div>
+      </div>
+      <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-msg"></div></div>
+    </div>
+
+    <div class="fase-nav">
+      <a href="fase-9.html"><span class="fn-label">← Sebelumnya</span><span class="fn-title">Fase 9: Bikin Aplikasi EXE</span></a>
+      <a href="index.html" class="fn-next"><span class="fn-label">🏆 Selesai!</span><span class="fn-title">Kembali ke Roadmap</span></a>
+    </div>
+
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

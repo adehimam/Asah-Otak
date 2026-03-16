@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fase 8: Bikin Web App — Belajar Claude</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>:root { --fase-color: #f472b6; }</style>
+</head>
+<body data-fase="fase8">
+  <nav>
+    <a href="index.html" class="logo">⚡ Belajar Claude</a>
+    <a href="index.html" class="nav-back">← Kembali ke Roadmap</a>
+  </nav>
+  <div class="top-progress"><div class="top-progress-fill"></div></div>
+  <div class="page-wrap">
+
+    <div class="fase-header">
+      <div class="fase-badge" style="color:#f472b6;border-color:rgba(244,114,182,0.3);background:rgba(244,114,182,0.08)">🌐 FASE 8</div>
+      <h1 class="fase-title">Bikin Aplikasi Web Sederhana</h1>
+      <p class="fase-sub">HTML, CSS, JavaScript — trio ini yang jadi fondasi semua website dan web app di dunia.</p>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(244,114,182,0.15);color:#f472b6">8.1</div>
+      <h2>Tiga Komponen Utama Web App</h2>
+      <p>Semua website yang kamu lihat di internet — dari yang sederhana sampai sekompleks YouTube — dibangun dari 3 bahan dasar yang sama.</p>
+      <p><strong>HTML (HyperText Markup Language)</strong> — Ini adalah struktur atau kerangka halaman. Dia yang nentuin ada teks apa, gambar apa, tombol di mana. Tanpa HTML, halaman web gak ada wujudnya.</p>
+      <p><strong>CSS (Cascading Style Sheets)</strong> — Ini yang bikin tampilan jadi cantik. Warna, ukuran font, layout, animasi — semua urusan CSS. HTML tanpa CSS itu kayak rumah tanpa cat dan dekorasi.</p>
+      <p><strong>JavaScript</strong> — Ini yang bikin web jadi interaktif dan "hidup". Klik tombol → sesuatu terjadi. Form dikirim → data diproses. Semua logika dan interaksi ada di sini.</p>
+      <div class="callout tip">💡 <strong>Analogi bangunan:</strong> HTML = struktur beton & tembok. CSS = cat, wallpaper, furnitur. JavaScript = listrik, AC, pintu otomatis. Ketiganya perlu ada biar rumahnya layak huni dan nyaman.</div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Tanya Claude</div>
+        <pre>Buatkan contoh halaman HTML sederhana yang menampilkan nama dan biodata singkat. Sertakan styling CSS dasar dan satu tombol JavaScript yang menampilkan pesan "Halo!" saat diklik.</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Coba Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(244,114,182,0.15);color:#f472b6">8.2</div>
+      <h2>Struktur File Web App</h2>
+      <p>Web app yang rapi punya struktur folder yang terorganisir. Untuk pemula, mulai dari yang sederhana dulu:</p>
+      <p><strong>index.html</strong> — halaman utama. Browser secara otomatis nyari file ini pertama kali.</p>
+      <p><strong>style.css</strong> — semua styling ditaruh di sini.</p>
+      <p><strong>script.js</strong> — semua kode JavaScript ditaruh di sini.</p>
+      <p><strong>folder img/</strong> — tempat nyimpen gambar-gambar.</p>
+      <div class="callout info">ℹ️ <strong>Fun fact:</strong> Website "Belajar Claude" yang kamu baca sekarang juga pakai struktur ini! index.html, style.css, main.js — persis seperti yang udah kamu upload ke GitHub.</div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Tanya Claude</div>
+        <pre>Aku mau bikin web app kalkulator sederhana. Buatkan struktur folder yang rapi dan kode lengkapnya dalam satu file HTML (inline CSS dan JS). Tampilannya harus mobile-friendly.</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Coba Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(244,114,182,0.15);color:#f472b6">8.3</div>
+      <h2>Elemen-Elemen HTML yang Wajib Diketahui</h2>
+      <p>HTML punya ratusan elemen, tapi yang kepake sehari-hari cuma sekitar 20-an. Ini yang paling penting:</p>
+      <p><strong>Teks:</strong> &lt;h1&gt;–&lt;h6&gt; untuk judul, &lt;p&gt; untuk paragraf, &lt;span&gt; untuk teks inline.</p>
+      <p><strong>Layout:</strong> &lt;div&gt; untuk kotak pembungkus, &lt;section&gt; untuk bagian konten, &lt;nav&gt; untuk navigasi.</p>
+      <p><strong>Interaksi:</strong> &lt;button&gt; untuk tombol, &lt;input&gt; untuk form isian, &lt;a&gt; untuk link.</p>
+      <p><strong>Media:</strong> &lt;img&gt; untuk gambar, &lt;video&gt; untuk video.</p>
+      <div class="callout tip">💡 <strong>Tips:</strong> Gak perlu hafal semua. Yang penting tau fungsinya. Kalau lupa sintaksnya, tanya Claude atau googling "html [nama elemen]" — langsung keluar.</div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Tanya Claude</div>
+        <pre>Buatkan halaman web sederhana berisi: judul, deskripsi singkat, 3 kartu produk dengan gambar placeholder, harga, dan tombol "Beli". Pakai HTML dan CSS saja, tanpa framework.</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Coba Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(244,114,182,0.15);color:#f472b6">8.4</div>
+      <h2>Deploy Web App ke Netlify</h2>
+      <p>Ini udah familiar buat kamu sob! Tapi buat yang baru, ini alurnya:</p>
+      <p>1. Tulis kode di VS Code → simpan semua file</p>
+      <p>2. Upload ke GitHub repo baru</p>
+      <p>3. Sambungin repo ke Netlify → klik Deploy</p>
+      <p>4. Dalam 1–2 menit, web app kamu udah live dan bisa diakses siapapun di seluruh dunia 🌏</p>
+      <div class="callout info">ℹ️ <strong>Gratis:</strong> Netlify gratis untuk proyek statis (HTML/CSS/JS tanpa backend). Bandwidth 100GB/bulan — lebih dari cukup untuk project personal.</div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Tanya Claude</div>
+        <pre>Aku mau deploy web app HTML statis ke Netlify dari GitHub. Jelaskan langkah-langkahnya dari awal sampai website live, untuk orang yang belum pernah pakai Netlify sama sekali.</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Coba Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(244,114,182,0.15);color:#f472b6">8.5</div>
+      <h2>Komponen Tambahan Web App Modern</h2>
+      <p>Kalau web app kamu makin kompleks, kamu akan ketemu istilah-istilah ini:</p>
+      <p><strong>Frontend</strong> — bagian yang dilihat user (HTML/CSS/JS). Ini yang udah kamu pelajari.</p>
+      <p><strong>Backend</strong> — dapur di balik layar. Mengurus database, login user, logika bisnis. Pakai bahasa seperti Node.js, Python, PHP.</p>
+      <p><strong>Database</strong> — tempat nyimpen data secara permanen. Contoh: MySQL, MongoDB, Supabase.</p>
+      <p><strong>API</strong> — jembatan antara frontend dan backend, atau antara dua aplikasi berbeda. Kamu udah kenalan sama ini di Fase 5!</p>
+      <div class="callout tip">💡 <strong>Saran:</strong> Kuasai frontend dulu sampai solid sebelum belajar backend. Banyak developer sukses yang fokus jadi frontend specialist aja — dan itu sudah sangat bernilai di market.</div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Tanya Claude</div>
+        <pre>Jelaskan perbedaan frontend dan backend pakai analogi restoran. Untuk pemula yang baru bisa HTML/CSS/JS, langkah selanjutnya belajar apa dulu?</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Coba Sekarang</a>
+      </div>
+    </div>
+
+    <div class="checklist-wrap">
+      <div class="checklist-title">✅ Progress Kamu — Fase 8</div>
+      <div class="check-item"><input type="checkbox" id="c1"><label for="c1">Aku paham peran HTML, CSS, dan JavaScript dalam web app</label></div>
+      <div class="check-item"><input type="checkbox" id="c2"><label for="c2">Aku ngerti struktur folder web app yang rapi</label></div>
+      <div class="check-item"><input type="checkbox" id="c3"><label for="c3">Aku tau elemen HTML yang paling sering dipakai</label></div>
+      <div class="check-item"><input type="checkbox" id="c4"><label for="c4">Aku bisa deploy web app sederhana ke Netlify</label></div>
+      <div class="check-item"><input type="checkbox" id="c5"><label for="c5">Aku paham bedanya frontend, backend, dan database</label></div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>
+      <div class="progress-text">0 dari 5 poin selesai</div>
+    </div>
+
+    <div class="quiz-wrap">
+      <div class="quiz-title">🧩 Quiz — Fase 8</div>
+      <div class="quiz-q" data-correct="0">
+        <p>1. Di antara HTML, CSS, JavaScript — mana yang bertanggung jawab atas TAMPILAN (warna, font, layout)?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">CSS</button>
+          <button class="quiz-opt">HTML</button>
+          <button class="quiz-opt">JavaScript</button>
+          <button class="quiz-opt">Ketiganya sama-sama</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="2">
+        <p>2. File apa yang pertama kali dicari browser saat membuka sebuah website?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">style.css</button>
+          <button class="quiz-opt">script.js</button>
+          <button class="quiz-opt">index.html</button>
+          <button class="quiz-opt">main.js</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="1">
+        <p>3. JavaScript dalam web app berfungsi untuk?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Mengatur warna dan layout</button>
+          <button class="quiz-opt">Menambah interaktivitas dan logika</button>
+          <button class="quiz-opt">Menyimpan gambar dan video</button>
+          <button class="quiz-opt">Membuat struktur halaman</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="3">
+        <p>4. Bagian web app yang dilihat langsung oleh user disebut?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Backend</button>
+          <button class="quiz-opt">Database</button>
+          <button class="quiz-opt">Server</button>
+          <button class="quiz-opt">Frontend</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="0">
+        <p>5. Netlify cocok dipakai untuk hosting jenis web app apa?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Web statis (HTML/CSS/JS tanpa backend)</button>
+          <button class="quiz-opt">Aplikasi dengan database PostgreSQL besar</button>
+          <button class="quiz-opt">Game online multiplayer</button>
+          <button class="quiz-opt">Sistem operasi berbasis cloud</button>
+        </div>
+      </div>
+      <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-msg"></div></div>
+    </div>
+
+    <div class="fase-nav">
+      <a href="fase-7.html"><span class="fn-label">← Sebelumnya</span><span class="fn-title">Fase 7: Dasar Koding</span></a>
+      <a href="fase-9.html" class="fn-next"><span class="fn-label">Selanjutnya →</span><span class="fn-title">Fase 9: Bikin Aplikasi EXE</span></a>
+    </div>
+
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

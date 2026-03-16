@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fase 9: Bikin Aplikasi EXE — Belajar Claude</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>:root { --fase-color: #818cf8; }</style>
+</head>
+<body data-fase="fase9">
+  <nav>
+    <a href="index.html" class="logo">⚡ Belajar Claude</a>
+    <a href="index.html" class="nav-back">← Kembali ke Roadmap</a>
+  </nav>
+  <div class="top-progress"><div class="top-progress-fill"></div></div>
+  <div class="page-wrap">
+
+    <div class="fase-header">
+      <div class="fase-badge" style="color:#818cf8;border-color:rgba(129,140,248,0.3);background:rgba(129,140,248,0.08)">🖥️ FASE 9</div>
+      <h1 class="fase-title">Bikin Aplikasi EXE (Desktop)</h1>
+      <p class="fase-sub">EXE itu aplikasi yang jalan di komputer, bukan di browser. Cara bikinnya lebih dari satu — pilih yang paling cocok buat kamu.</p>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(129,140,248,0.15);color:#818cf8">9.1</div>
+      <h2>Apa itu Aplikasi EXE?</h2>
+      <p>File .exe adalah format aplikasi yang jalan di Windows. Waktu kamu install Spotify, VS Code, atau game — itu semua awalnya dari file .exe. Dia jalan langsung di sistem operasi, bukan di browser.</p>
+      <p>Bedanya sama web app: web app butuh internet dan browser, EXE bisa jalan offline dan punya akses lebih dalam ke sistem komputer (file, kamera, printer, dll).</p>
+      <div class="callout tip">💡 <strong>Analogi:</strong> Web app itu kayak warung online — butuh internet, diakses lewat browser. EXE itu kayak toko fisik — bisa dikunjungi offline, bisa nyimpen barang sendiri (data lokal), dan punya "kunci" sendiri (installer).</div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Tanya Claude</div>
+        <pre>Jelaskan perbedaan aplikasi EXE (desktop) vs web app vs APK (Android) dalam bahasa yang mudah dipahami pemula. Kapan sebaiknya memilih masing-masing?</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Tanya Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(129,140,248,0.15);color:#818cf8">9.2</div>
+      <h2>Komponen Utama Aplikasi EXE</h2>
+      <p>Aplikasi EXE pada dasarnya punya 3 komponen utama:</p>
+      <p><strong>1. UI (User Interface)</strong> — tampilan yang dilihat user. Tombol, form, jendela aplikasi. Di desktop ini disebut "window" atau "GUI" (Graphical User Interface).</p>
+      <p><strong>2. Logic/Business Logic</strong> — otak aplikasi. Ngurus kalkulasi, pemrosesan data, aturan bisnis. Ini kode yang "mikir".</p>
+      <p><strong>3. Data Storage</strong> — penyimpanan data. Bisa ke file lokal, database lokal (SQLite), atau kirim ke server via internet.</p>
+      <div class="callout info">ℹ️ Ditambah satu lagi untuk distribusi: <strong>Installer</strong> — file setup yang memudahkan user menginstall aplikasimu. Dibuat pakai tools seperti NSIS atau Inno Setup.</div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Tanya Claude</div>
+        <pre>Aku mau bikin aplikasi desktop sederhana: kalkulator dengan tampilan jendela (bukan di browser). Tools apa yang paling mudah untuk pemula yang sudah bisa HTML/CSS/JS?</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Tanya Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(129,140,248,0.15);color:#818cf8">9.3</div>
+      <h2>Cara Termudah Bikin EXE: Electron</h2>
+      <p><strong>Electron</strong> adalah framework yang bikin kamu bisa bikin aplikasi desktop pakai HTML, CSS, dan JavaScript — bahasa yang udah kamu pelajari di Fase 8!</p>
+      <p>Cara kerjanya simpel: Electron pada dasarnya "membungkus" web app kamu jadi aplikasi desktop. Hasilnya bisa di-export jadi .exe untuk Windows, .dmg untuk Mac, atau .deb untuk Linux.</p>
+      <p>Aplikasi terkenal yang dibikin pakai Electron: VS Code, Slack, Discord, WhatsApp Desktop. Serius.</p>
+      <div class="callout tip">💡 <strong>Alternatif lebih ringan:</strong> <strong>Tauri</strong> — mirip Electron tapi ukuran filenya jauh lebih kecil. Butuh sedikit belajar Rust, tapi hasilnya lebih efisien. Atau pakai <strong>PyInstaller</strong> kalau kamu mau bikin EXE dari Python.</div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Tanya Claude</div>
+        <pre>Aku udah bisa HTML, CSS, JavaScript. Aku mau convert web app sederhana ku jadi aplikasi .exe pakai Electron. Jelaskan langkah-langkah dasarnya dari install sampai export jadi .exe.</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Tanya Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(129,140,248,0.15);color:#818cf8">9.4</div>
+      <h2>Cara Bikin EXE dari Python: PyInstaller</h2>
+      <p>Kalau kamu prefer Python, ada <strong>PyInstaller</strong> — tool yang bisa convert script Python (.py) jadi file .exe yang bisa dijalankan tanpa perlu install Python dulu.</p>
+      <p>Untuk UI-nya, Python punya beberapa pilihan: <strong>Tkinter</strong> (built-in, paling simpel), <strong>PyQt</strong> (lebih modern, lebih kompleks), atau <strong>CustomTkinter</strong> (tampilan modern, mudah dipelajari).</p>
+      <div class="callout warn">⚠️ <strong>Catatan:</strong> EXE dari Electron ukurannya besar (50–150MB) karena membawa Chromium di dalamnya. Kalau ukuran file penting, pertimbangkan Tauri atau PyInstaller yang jauh lebih kecil.</div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Tanya Claude</div>
+        <pre>Buatkan contoh aplikasi Python sederhana pakai CustomTkinter: form dengan input nama dan tombol submit yang menampilkan pesan "Halo, [nama]!". Setelah itu jelaskan cara convert ke .exe pakai PyInstaller.</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Coba Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(129,140,248,0.15);color:#818cf8">9.5</div>
+      <h2>Distribusi dan Update Aplikasi EXE</h2>
+      <p>Setelah .exe jadi, gimana cara user dapetinnya? Ada beberapa opsi:</p>
+      <p><strong>Direct Download</strong> — taruh file .exe di Google Drive, GitHub Releases, atau website sendiri. User tinggal download dan install.</p>
+      <p><strong>GitHub Releases</strong> — cara paling profesional dan gratis. Setiap versi baru, upload file .exe baru ke sini.</p>
+      <p><strong>Sistem Auto-Update</strong> — kalau pakai Electron, ada library <strong>electron-updater</strong> yang bisa bikin aplikasimu auto-update seperti Chrome atau VS Code.</p>
+      <div class="callout tip">💡 <strong>Tips distribusi:</strong> Sebelum distribusi, test dulu di komputer yang bersih (belum pernah install app kamu). Sering ada dependency yang ketinggalan dan bikin error di komputer orang lain.</div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Tanya Claude</div>
+        <pre>Aku mau distribusikan aplikasi .exe buatan sendiri ke teman-teman. Cara paling mudah dan gratis itu gimana? Apakah perlu code signing? Jelaskan untuk pemula.</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Tanya Sekarang</a>
+      </div>
+    </div>
+
+    <div class="checklist-wrap">
+      <div class="checklist-title">✅ Progress Kamu — Fase 9</div>
+      <div class="check-item"><input type="checkbox" id="c1"><label for="c1">Aku paham perbedaan EXE, web app, dan APK</label></div>
+      <div class="check-item"><input type="checkbox" id="c2"><label for="c2">Aku ngerti 3 komponen utama aplikasi EXE: UI, Logic, Data Storage</label></div>
+      <div class="check-item"><input type="checkbox" id="c3"><label for="c3">Aku tau cara bikin EXE dari HTML/JS pakai Electron</label></div>
+      <div class="check-item"><input type="checkbox" id="c4"><label for="c4">Aku tau cara bikin EXE dari Python pakai PyInstaller</label></div>
+      <div class="check-item"><input type="checkbox" id="c5"><label for="c5">Aku paham cara distribusi file .exe ke orang lain</label></div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>
+      <div class="progress-text">0 dari 5 poin selesai</div>
+    </div>
+
+    <div class="quiz-wrap">
+      <div class="quiz-title">🧩 Quiz — Fase 9</div>
+      <div class="quiz-q" data-correct="1">
+        <p>1. Aplikasi desktop terkenal apa yang dibangun menggunakan Electron?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Google Chrome</button>
+          <button class="quiz-opt">VS Code dan Discord</button>
+          <button class="quiz-opt">Microsoft Excel</button>
+          <button class="quiz-opt">Adobe Photoshop</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="2">
+        <p>2. Apa keunggulan Electron untuk developer yang sudah bisa HTML/CSS/JS?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Ukuran file .exe yang sangat kecil</button>
+          <button class="quiz-opt">Bisa jalan di Android dan iOS</button>
+          <button class="quiz-opt">Bisa bikin desktop app pakai HTML/CSS/JS yang sudah dikuasai</button>
+          <button class="quiz-opt">Tidak butuh proses kompilasi sama sekali</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="0">
+        <p>3. PyInstaller digunakan untuk?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Convert script Python jadi file .exe</button>
+          <button class="quiz-opt">Menginstall Python di komputer baru</button>
+          <button class="quiz-opt">Membuat tampilan UI untuk Python</button>
+          <button class="quiz-opt">Upload file ke GitHub</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="3">
+        <p>4. Kenapa ukuran .exe dari Electron bisa besar (50–150MB)?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Karena mengandung virus proteksi</button>
+          <button class="quiz-opt">Karena kode JavaScript ukurannya besar</button>
+          <button class="quiz-opt">Karena menyimpan semua gambar dalam resolusi tinggi</button>
+          <button class="quiz-opt">Karena membawa browser Chromium di dalamnya</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="1">
+        <p>5. Cara paling profesional dan gratis untuk distribusi file .exe adalah?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Kirim via WhatsApp langsung</button>
+          <button class="quiz-opt">Upload ke GitHub Releases</button>
+          <button class="quiz-opt">Taruh di USB flashdisk</button>
+          <button class="quiz-opt">Upload ke Instagram Stories</button>
+        </div>
+      </div>
+      <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-msg"></div></div>
+    </div>
+
+    <div class="fase-nav">
+      <a href="fase-8.html"><span class="fn-label">← Sebelumnya</span><span class="fn-title">Fase 8: Bikin Web App</span></a>
+      <a href="fase-10.html" class="fn-next"><span class="fn-label">Selanjutnya →</span><span class="fn-title">Fase 10: Bikin Aplikasi APK</span></a>
+    </div>
+
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
