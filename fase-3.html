@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fase 3: Prompt Level Lanjut — Belajar Claude</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>:root { --fase-color: #22c97a; }</style>
+</head>
+<body data-fase="fase3">
+  <nav>
+    <a href="../index.html" class="logo">⚡ Belajar Claude</a>
+    <a href="../index.html" class="nav-back">← Kembali ke Roadmap</a>
+  </nav>
+  <div class="top-progress"><div class="top-progress-fill"></div></div>
+  <div class="page-wrap">
+
+    <div class="fase-header">
+      <div class="fase-badge" style="color:#22c97a;border-color:rgba(34,201,122,0.3);background:rgba(34,201,122,0.08)">🧠 FASE 3</div>
+      <h1 class="fase-title">Prompt Level Lanjut</h1>
+      <p class="fase-sub">Udah bisa bikin prompt dasar? Sekarang kita naik level. Ini teknik yang dipakai sama developer dan power user Claude sehari-hari.</p>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(34,201,122,0.15);color:#22c97a">3.1</div>
+      <h2>System Prompt — Instruksi Rahasia di Balik Layar</h2>
+      <p>Kalau kamu pernah pakai aplikasi AI yang karakternya "beda" dari Claude biasanya — misalnya ada AI customer service yang selalu jawab formal, atau AI yang selalu pakai bahasa tertentu — itu karena ada <strong>system prompt</strong> di baliknya.</p>
+      <p>System prompt itu instruksi yang dikasih ke Claude <em>sebelum</em> percakapan dimulai. Posisinya "di atas" chat biasa. Biasanya dipakai sama developer buat ngatur kepribadian, batasan, dan cara kerja AI mereka.</p>
+      <p>Di claude.ai biasa, kamu bisa simulasikan ini dengan kasih instruksi di awal chat dan bilang "pegang instruksi ini sepanjang percakapan kita."</p>
+      <div class="callout tip">
+        💡 <strong>Contoh use case:</strong> Kalau kamu bikin chatbot untuk toko online kamu, system prompt-nya bisa berisi: nama toko, daftar produk, cara refund, dan instruksi "jawab hanya pertanyaan seputar produk kami."
+      </div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Langsung</div>
+        <pre>Aku mau kamu berperan sebagai asisten toko online "Kopi Nusantara" sepanjang percakapan ini. Aturannya:
+- Selalu sapa dengan "Halo Kak!"
+- Hanya jawab pertanyaan seputar kopi dan produk kami
+- Kalau ditanya di luar topik kopi, tolak dengan sopan
+- Produk kami: Kopi Aceh Gayo (Rp 85rb), Kopi Toraja (Rp 90rb), Kopi Flores (Rp 80rb)
+
+Sudah siap? Mulai sekarang kamu adalah asisten Kopi Nusantara.</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Coba Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(34,201,122,0.15);color:#22c97a">3.2</div>
+      <h2>Temperature — Atur Seberapa "Kreatif" Jawaban Claude</h2>
+      <p><strong>Temperature</strong> itu setting yang ngatur seberapa "random" atau "kreatif" output Claude. Nilainya antara 0 sampai 1.</p>
+      <p><strong>Temperature rendah (0–0.3):</strong> Claude lebih fokus, konsisten, dan prediktabel. Cocok buat coding, analisis data, atau jawaban faktual yang harus akurat.</p>
+      <p><strong>Temperature tinggi (0.7–1.0):</strong> Claude lebih kreatif, variatif, dan kadang "berani" kasih jawaban tak terduga. Cocok buat brainstorming, nulis kreatif, atau cari ide-ide segar.</p>
+      <div class="callout info">
+        ℹ️ Di claude.ai (chat biasa), kamu gak bisa set temperature secara langsung. Tapi kamu bisa "minta" perilakunya — misalnya: "Jawab dengan konsisten dan faktual" (efek temperature rendah) atau "Kasih aku ide-ide kreatif yang gak biasa" (efek temperature tinggi).
+      </div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Perbandingan</div>
+        <pre>Prompt A (minta jawaban konsisten/faktual):
+"Jelaskan cara kerja HTTPS secara teknis dan akurat. Jangan ada spekulasi."
+
+Prompt B (minta jawaban kreatif):
+"Jelaskan cara kerja HTTPS tapi pakai analogi yang paling kreatif dan tidak biasa yang bisa kamu pikirkan. Boleh aneh dan imajinatif."</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Coba Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(34,201,122,0.15);color:#22c97a">3.3</div>
+      <h2>Iterasi Prompt — Cara Benerin Hasil yang Kurang Memuaskan</h2>
+      <p>Ini skill yang paling penting tapi paling sering diabaikan: <strong>jangan nyerah setelah satu kali coba</strong>. Kalau hasilnya kurang oke, jangan langsung buang — iterate!</p>
+      <p>Caranya: kasih feedback ke Claude di chat yang sama. Bilang apa yang kurang, minta dia perbaiki. Claude bisa revisi berdasarkan feedback kamu tanpa harus mulai dari nol.</p>
+      <div class="callout tip">
+        💡 <strong>Kalimat iterasi yang berguna:</strong><br>
+        - "Hasilnya terlalu formal, bisa lebih santai?"<br>
+        - "Bagus, tapi terlalu panjang. Bisa dipangkas jadi setengahnya?"<br>
+        - "Poin nomor 3 kurang jelas, bisa dijelaskan lebih detail?"<br>
+        - "Coba versi lain yang lebih kreatif."
+      </div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Langsung</div>
+        <pre>Langkah 1 — Kirim ini dulu:
+"Buatkan bio Instagram untuk fotografer freelance."
+
+Langkah 2 — Setelah dapat hasilnya, kirim:
+"Bagus, tapi terlalu panjang dan formal. Bisa dibuat max 80 karakter, tone lebih santai dan ada emoji-nya?"
+
+Langkah 3 — Iterasi lagi sampai kamu puas!</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Coba Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(34,201,122,0.15);color:#22c97a">3.4</div>
+      <h2>Analisis Dokumen — Upload dan Tanya</h2>
+      <p>Claude bisa baca dan analisis dokumen yang kamu upload — PDF, Word, gambar teks, CSV, dan lainnya. Ini fitur yang underrated banget.</p>
+      <p>Use case praktisnya banyak banget: rangkum kontrak panjang, ekstrak data dari laporan keuangan, cari poin penting dari proposal tebal, atau analisis feedback pelanggan dari file Excel.</p>
+      <div class="callout info">
+        ℹ️ Caranya gampang: di claude.ai, klik ikon attachment (📎) di kotak chat, upload file kamu, terus tanya apapun tentang isinya.
+      </div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Langsung</div>
+        <pre>Upload dokumen apapun (PDF, Word, atau gambar teks), terus kirim prompt ini:
+
+"Tolong baca dokumen yang aku upload dan:
+1. Buat ringkasan maksimal 5 poin utama
+2. Sebutkan 3 hal paling penting yang perlu aku perhatikan
+3. Kalau ada istilah teknis, jelaskan dengan bahasa awam"</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Coba Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(34,201,122,0.15);color:#22c97a">3.5</div>
+      <h2>Prompt untuk Rangkuman Artikel Panjang</h2>
+      <p>Salah satu use case paling sering: kamu nemuin artikel panjang, laporan, atau thread Twitter yang panjang banget — tapi gak ada waktu baca semua. Claude bisa bantu.</p>
+      <p>Kamu bisa paste teks panjangnya langsung ke Claude (atau upload file-nya), terus minta dia rangkum sesuai kebutuhan kamu.</p>
+      <div class="callout tip">
+        💡 <strong>Tips:</strong> Kalau mau rangkuman yang lebih berguna, kasih konteks kamu siapa dan untuk apa rangkumannya. Hasilnya bakal lebih relevan.
+      </div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Template Rangkuman Ampuh</div>
+        <pre>Aku adalah [siapa kamu]. Aku butuh memahami artikel/dokumen berikut untuk keperluan [tujuan kamu].
+
+[PASTE TEKS PANJANGNYA DI SINI]
+
+Tolong buatkan:
+1. Ringkasan 3 kalimat (TL;DR)
+2. 5 poin kunci yang paling penting
+3. Action item atau kesimpulan praktis yang bisa aku lakukan</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Coba Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(34,201,122,0.15);color:#22c97a">3.6</div>
+      <h2>Few-Shot Prompting — Kasih Beberapa Contoh Sekaligus</h2>
+      <p>Di Fase 2 kita udah bahas kasih contoh. Sekarang kita naik level: <strong>few-shot prompting</strong> — kasih Claude <em>beberapa</em> contoh input-output berpasangan, supaya dia nangkep pola yang kamu mau.</p>
+      <p>Ini sangat berguna kalau kamu mau Claude generate banyak item dengan format atau gaya yang konsisten — misalnya ratusan deskripsi produk, atau template pesan yang harus seragam.</p>
+      <div class="callout info">
+        ℹ️ Makin banyak contoh yang kamu kasih (2-5 pasang biasanya cukup), makin Claude nangkep polanya. Tapi jangan terlalu banyak juga — 5 contoh sudah lebih dari cukup.
+      </div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Langsung</div>
+        <pre>Aku mau kamu buatkan deskripsi produk singkat (2 kalimat) untuk produk makanan. Ikuti pola contoh berikut:
+
+Produk: Keripik Singkong Pedas
+Output: Keripik singkong pilihan yang digoreng crispy dengan bumbu cabai merah asli. Cocok buat nemenin nonton atau ngemil sore bareng keluarga.
+
+Produk: Brownies Kukus Cokelat
+Output: Brownies kukus lembut dengan cokelat premium yang meleleh di lidah. Dibuat tanpa pengawet, cocok buat kado atau cemilan keluarga.
+
+Sekarang buatkan untuk produk-produk berikut:
+1. Sambal Matah Bali
+2. Nastar Keju Homemade
+3. Kue Lapis Legit</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Coba Sekarang</a>
+      </div>
+    </div>
+
+    <div class="checklist-wrap">
+      <div class="checklist-title">✅ Progress Kamu — Fase 3</div>
+      <div class="check-item"><input type="checkbox" id="c1"><label for="c1">Aku paham apa itu system prompt dan bisa mensimulasikannya</label></div>
+      <div class="check-item"><input type="checkbox" id="c2"><label for="c2">Aku ngerti konsep temperature dan bisa "minta" perilaku Claude yang sesuai</label></div>
+      <div class="check-item"><input type="checkbox" id="c3"><label for="c3">Aku terbiasa iterasi prompt sampai dapat hasil yang memuaskan</label></div>
+      <div class="check-item"><input type="checkbox" id="c4"><label for="c4">Aku bisa upload dokumen dan tanya Claude tentang isinya</label></div>
+      <div class="check-item"><input type="checkbox" id="c5"><label for="c5">Aku bisa pakai Claude buat rangkum artikel atau dokumen panjang</label></div>
+      <div class="check-item"><input type="checkbox" id="c6"><label for="c6">Aku bisa pakai few-shot prompting buat generate output yang konsisten</label></div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>
+      <div class="progress-text">0 dari 6 poin selesai</div>
+    </div>
+
+    <div class="quiz-wrap">
+      <div class="quiz-title">🧩 Quiz — Fase 3</div>
+      <div class="quiz-q" data-correct="2">
+        <p>1. Apa fungsi utama system prompt?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Mempercepat respons Claude</button>
+          <button class="quiz-opt">Membuat Claude lebih pintar</button>
+          <button class="quiz-opt">Memberi instruksi dasar yang mengatur perilaku Claude sebelum percakapan dimulai</button>
+          <button class="quiz-opt">Menghemat biaya API</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="0">
+        <p>2. Kamu mau Claude debug kode dengan jawaban yang akurat dan konsisten. Temperature yang cocok?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Temperature rendah (0–0.3)</button>
+          <button class="quiz-opt">Temperature tinggi (0.7–1.0)</button>
+          <button class="quiz-opt">Temperature tidak berpengaruh untuk coding</button>
+          <button class="quiz-opt">Selalu pakai temperature 0.5</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="1">
+        <p>3. Hasil prompt kamu terlalu panjang. Cara terbaik?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Hapus chat dan mulai dari nol</button>
+          <button class="quiz-opt">Kasih feedback di chat yang sama: "Terlalu panjang, bisa dipangkas jadi setengahnya?"</button>
+          <button class="quiz-opt">Ganti ke model yang berbeda</button>
+          <button class="quiz-opt">Refresh halaman</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="3">
+        <p>4. Apa itu few-shot prompting?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Teknik buat bikin prompt yang pendek</button>
+          <button class="quiz-opt">Mengirim prompt yang sama beberapa kali</button>
+          <button class="quiz-opt">Teknik buat Claude bisa jawab lebih cepat</button>
+          <button class="quiz-opt">Kasih beberapa contoh input-output berpasangan supaya Claude nangkep polanya</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="0">
+        <p>5. Kamu punya laporan PDF 50 halaman. Cara tercepat dapat inti sarinya pakai Claude?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Upload PDF ke Claude, minta rangkuman 5 poin utama</button>
+          <button class="quiz-opt">Copy-paste semua teks manual ke Claude</button>
+          <button class="quiz-opt">Baca sendiri dulu baru tanya Claude</button>
+          <button class="quiz-opt">Claude tidak bisa baca PDF</button>
+        </div>
+      </div>
+      <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-msg"></div></div>
+    </div>
+
+    <div class="fase-nav">
+      <a href="fase-2.html">
+        <span class="fn-label">← Sebelumnya</span>
+        <span class="fn-title">Fase 2: Belajar Ngomong ke Claude</span>
+      </a>
+      <a href="fase-4.html" class="fn-next">
+        <span class="fn-label">Selanjutnya →</span>
+        <span class="fn-title">Fase 4: Claude untuk Coding</span>
+      </a>
+    </div>
+
+  </div>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

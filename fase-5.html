@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fase 5: Claude API Dasar — Belajar Claude</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>:root { --fase-color: #ff4e6a; }</style>
+</head>
+<body data-fase="fase5">
+  <nav>
+    <a href="../index.html" class="logo">⚡ Belajar Claude</a>
+    <a href="../index.html" class="nav-back">← Kembali ke Roadmap</a>
+  </nav>
+  <div class="top-progress"><div class="top-progress-fill"></div></div>
+  <div class="page-wrap">
+
+    <div class="fase-header">
+      <div class="fase-badge" style="color:#ff4e6a;border-color:rgba(255,78,106,0.3);background:rgba(255,78,106,0.08)">🔌 FASE 5</div>
+      <h1 class="fase-title">Claude API Dasar</h1>
+      <p class="fase-sub">Ini jembatan antara "ngobrol sama Claude" dan "nyantemin Claude ke produkmu". Gak sesusah kedengarannya, sob.</p>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(255,78,106,0.15);color:#ff4e6a">5.1</div>
+      <h2>Apa itu API? Analogi Sederhana</h2>
+      <p>Sebelum masuk ke Claude API, kita pahami dulu apa itu API secara umum.</p>
+      <p><strong>API</strong> itu singkatan dari <em>Application Programming Interface</em>. Ribet kedengarannya, tapi analoginya simpel banget: API itu kayak <strong>remote control</strong>.</p>
+      <p>Bayangin Claude itu TV canggih. Kalau kamu mau nonton, kamu perlu remote buat ngontrolnya. API itu remote-nya — alat yang kamu pakai dari "luar" buat ngontrol atau minta sesuatu dari sebuah sistem, tanpa harus masuk ke "dapur"-nya langsung.</p>
+      <p>Jadi Claude API = cara kamu nyambungin kode/aplikasimu ke otak Claude, tanpa harus buka claude.ai secara manual.</p>
+      <div class="callout tip">
+        💡 <strong>Bedanya pakai claude.ai vs pakai API:</strong> Di claude.ai kamu chat manual. Pakai API, kamu bisa "otomatisasi" — aplikasimu yang ngobrol sama Claude tanpa campur tangan kamu setiap saat.
+      </div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Pahami Konsepnya</div>
+        <pre>Tanya ke Claude:
+"Jelaskan ke aku dengan analogi yang paling simpel: bedanya aku pakai claude.ai secara manual vs aplikasiku yang pakai Claude API. Aku developer pemula, jadi jangan terlalu teknis."</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Coba Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(255,78,106,0.15);color:#ff4e6a">5.2</div>
+      <h2>Daftar Akun & Dapat API Key</h2>
+      <p>Buat pakai Claude API, kamu butuh <strong>API Key</strong> — ini semacam "password khusus" yang ngasih akses ke sistem Anthropic. Setiap request yang kamu kirim lewat API harus pake key ini.</p>
+      <p>Cara dapetin API Key:</p>
+      <p>1. Buka <strong>console.anthropic.com</strong><br>
+      2. Daftar atau login dengan akun kamu<br>
+      3. Klik menu <strong>"API Keys"</strong> di sidebar<br>
+      4. Klik <strong>"Create Key"</strong> → kasih nama → copy key-nya</p>
+      <div class="callout warn">
+        ⚠️ <strong>JANGAN pernah share API Key kamu ke siapapun</strong> — atau commit ke GitHub tanpa disembunyiin. Kalau orang lain dapat key kamu, mereka bisa pakai quota API kamu dan kamu yang kena tagihan. Simpan di file .env dan masukkan .env ke .gitignore.
+      </div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Action Item</div>
+        <pre>1. Buka console.anthropic.com
+2. Buat API Key baru
+3. Simpan key-nya di tempat yang aman (misal: file .env)
+4. Jangan pernah paste key kamu di chat Claude atau commit ke GitHub</pre>
+        <a href="https://console.anthropic.com" target="_blank" class="btn-coba">Buka Console Anthropic →</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(255,78,106,0.15);color:#ff4e6a">5.3</div>
+      <h2>Struktur Request API — Anatomi Pesan ke Claude</h2>
+      <p>Setiap kali kamu kirim request ke Claude API, ada beberapa bagian yang wajib ada. Mari kita bedah satu per satu:</p>
+      <p><strong>model</strong> — model Claude yang mau kamu pakai. Contoh: "claude-sonnet-4-5" atau "claude-haiku-4-5"</p>
+      <p><strong>max_tokens</strong> — batas maksimal panjang jawaban Claude. 1 token ≈ 0.75 kata. Kalau kamu set 1000, jawabannya maksimal sekitar 750 kata.</p>
+      <p><strong>messages</strong> — isi percakapannya. Berupa array berisi "role" (user atau assistant) dan "content" (isi pesannya).</p>
+      <div class="callout info">
+        ℹ️ Untuk pemula, fokus ke tiga bagian ini dulu. Nanti kalau udah lancar, baru explore parameter lain seperti temperature, system prompt, dll.
+      </div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Contoh Request API (JavaScript)</div>
+        <pre>const response = await fetch("https://api.anthropic.com/v1/messages", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "x-api-key": "API_KEY_KAMU_DI_SINI",
+    "anthropic-version": "2023-06-01"
+  },
+  body: JSON.stringify({
+    model: "claude-haiku-4-5-20251001",
+    max_tokens: 1000,
+    messages: [
+      { role: "user", content: "Halo Claude! Apa kabar?" }
+    ]
+  })
+});
+
+const data = await response.json();
+console.log(data.content[0].text); // Ini jawaban Claude</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Tanya Claude → Jelaskan Kode Ini</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(255,78,106,0.15);color:#ff4e6a">5.4</div>
+      <h2>Bedanya Pakai claude.ai vs Pakai API Langsung</h2>
+      <p>Biar makin jelas, ini perbandingan lengkap antara dua cara akses Claude:</p>
+      <p><strong>Claude.ai (chat biasa)</strong><br>
+      ✓ Gratis (ada batas pesan)<br>
+      ✓ Langsung bisa dipakai, gak perlu coding<br>
+      ✓ Ada tampilan yang enak dipakai<br>
+      ✗ Manual, gak bisa diotomatisasi<br>
+      ✗ Gak bisa diintegrasikan ke aplikasi lain</p>
+      <p><strong>Claude API</strong><br>
+      ✓ Bisa diotomatisasi dan diintegrasikan ke aplikasimu<br>
+      ✓ Kontrol penuh atas semua parameter<br>
+      ✓ Bisa dipakai untuk ribuan request otomatis<br>
+      ✗ Berbayar per token yang dipakai<br>
+      ✗ Butuh kode untuk menggunakannya</p>
+      <div class="callout tip">
+        💡 <strong>Kesimpulan simpel:</strong> Buat belajar dan kerja sehari-hari → pakai claude.ai. Buat produk atau fitur yang butuh AI otomatis → pakai API.
+      </div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Coba Langsung</div>
+        <pre>Tanya Claude:
+"Aku developer indie yang mau bikin fitur auto-generate deskripsi produk di website toko online aku. Lebih cocok pakai claude.ai atau Claude API? Jelaskan alasannya."</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Buka Claude → Coba Sekarang</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(255,78,106,0.15);color:#ff4e6a">5.5</div>
+      <h2>Hitung Estimasi Biaya per Token</h2>
+      <p>Pakai Claude API itu bayarnya per token. Tapi tenang — harganya jauh lebih murah dari yang kamu bayangkan kalau diperhitungkan dengan baik.</p>
+      <p>Sebagai gambaran kasar (harga bisa berubah, cek selalu di docs resmi):</p>
+      <p><strong>Claude Haiku:</strong> paling murah, cocok buat fitur yang banyak request tapi simpel<br>
+      <strong>Claude Sonnet:</strong> harga menengah, balance antara kemampuan dan biaya<br>
+      <strong>Claude Opus:</strong> paling mahal, buat task yang beneran butuh kecerdasan tinggi</p>
+      <div class="callout info">
+        ℹ️ <strong>Estimasi kasar:</strong> 1000 token ≈ 750 kata. Satu percakapan normal biasanya 200-500 token. Kalau aplikasimu dipakai 100 user per hari dengan 5 request masing-masing, itu sekitar 500 request/hari. Hitung sendiri berapa tokennya dan berapa biayanya di pricing page Anthropic.
+      </div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Action Item</div>
+        <pre>1. Buka: anthropic.com/pricing
+2. Lihat harga per token untuk model yang mau kamu pakai
+3. Estimasi kebutuhan token aplikasimu per bulan
+4. Tanya Claude buat bantu hitung kalau bingung:
+   "Aku mau bikin fitur X yang dipakai Y user per hari.
+   Bantu aku estimasi biaya Claude API per bulannya."</pre>
+        <a href="https://www.anthropic.com/pricing" target="_blank" class="btn-coba">Cek Harga Resmi →</a>
+      </div>
+    </div>
+
+    <div class="materi-section">
+      <div class="materi-num" style="background:rgba(255,78,106,0.15);color:#ff4e6a">5.6</div>
+      <h2>Coba Kirim Prompt Pertama via API dari Browser</h2>
+      <p>Ini momen yang seru — pertama kalinya kamu "ngobrol" sama Claude bukan lewat chat, tapi lewat kode. Kita coba pakai cara paling simpel: fetch API langsung dari browser console.</p>
+      <p><strong>Langkahnya:</strong><br>
+      1. Buka browser (Chrome/Firefox)<br>
+      2. Buka tab kosong<br>
+      3. Klik kanan → Inspect → Console<br>
+      4. Paste kode di bawah (isi API Key kamu dulu)<br>
+      5. Tekan Enter dan lihat Claude jawab!</p>
+      <div class="callout warn">
+        ⚠️ Ini hanya untuk belajar/testing. Di aplikasi produksi, JANGAN pernah taruh API Key langsung di frontend/browser — harus lewat backend server supaya key kamu aman.
+      </div>
+      <div class="praktek-box">
+        <div class="praktek-label">⚡ Kode Pertamamu Pakai Claude API</div>
+        <pre>// Paste ini di browser console (F12 → Console)
+// Ganti API_KEY_KAMU dengan key yang udah kamu buat
+
+const apiKey = "API_KEY_KAMU";
+
+const response = await fetch("https://api.anthropic.com/v1/messages", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "x-api-key": apiKey,
+    "anthropic-version": "2023-06-01"
+  },
+  body: JSON.stringify({
+    model: "claude-haiku-4-5-20251001",
+    max_tokens: 200,
+    messages: [
+      { role: "user", content: "Halo! Kamu siapa dan kamu bisa bantu apa?" }
+    ]
+  })
+});
+
+const data = await response.json();
+console.log("Jawaban Claude:", data.content[0].text);</pre>
+        <a href="https://claude.ai" target="_blank" class="btn-coba">Tanya Claude → Kalau Ada Error</a>
+      </div>
+    </div>
+
+    <div class="checklist-wrap">
+      <div class="checklist-title">✅ Progress Kamu — Fase 5</div>
+      <div class="check-item"><input type="checkbox" id="c1"><label for="c1">Aku paham apa itu API pakai analogi sederhana</label></div>
+      <div class="check-item"><input type="checkbox" id="c2"><label for="c2">Aku udah daftar di console.anthropic.com dan punya API Key</label></div>
+      <div class="check-item"><input type="checkbox" id="c3"><label for="c3">Aku ngerti struktur request API: model, max_tokens, messages</label></div>
+      <div class="check-item"><input type="checkbox" id="c4"><label for="c4">Aku paham bedanya pakai claude.ai vs pakai API</label></div>
+      <div class="check-item"><input type="checkbox" id="c5"><label for="c5">Aku udah cek pricing dan bisa estimasi biaya API kasar</label></div>
+      <div class="check-item"><input type="checkbox" id="c6"><label for="c6">Aku udah berhasil kirim prompt pertama ke Claude API dan dapat responnya</label></div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill"></div></div>
+      <div class="progress-text">0 dari 6 poin selesai</div>
+    </div>
+
+    <div class="quiz-wrap">
+      <div class="quiz-title">🧩 Quiz — Fase 5</div>
+      <div class="quiz-q" data-correct="1">
+        <p>1. Analogi paling tepat untuk API adalah...</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Seperti gudang penyimpanan data</button>
+          <button class="quiz-opt">Seperti remote control — alat untuk mengontrol sistem dari luar tanpa masuk ke dalamnya</button>
+          <button class="quiz-opt">Seperti antivirus yang melindungi sistem</button>
+          <button class="quiz-opt">Seperti tampilan/interface website</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="3">
+        <p>2. API Key itu fungsinya untuk apa?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Membuat Claude menjawab lebih cepat</button>
+          <button class="quiz-opt">Menentukan model Claude yang dipakai</button>
+          <button class="quiz-opt">Mengenkripsi percakapan kamu dengan Claude</button>
+          <button class="quiz-opt">Identifikasi dan autentikasi — bukti bahwa request datang dari akun kamu</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="2">
+        <p>3. Mana tindakan yang BERBAHAYA dengan API Key?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Menyimpan API Key di file .env</button>
+          <button class="quiz-opt">Menggunakan API Key di backend server</button>
+          <button class="quiz-opt">Commit API Key ke repository GitHub yang public</button>
+          <button class="quiz-opt">Membuat beberapa API Key untuk project yang berbeda</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="0">
+        <p>4. Apa yang dimaksud "max_tokens" di request API?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Batas maksimal panjang jawaban Claude</button>
+          <button class="quiz-opt">Jumlah maksimal request per hari</button>
+          <button class="quiz-opt">Batas waktu tunggu response</button>
+          <button class="quiz-opt">Versi API yang digunakan</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-correct="1">
+        <p>5. Kamu mau bikin chatbot otomatis yang terintegrasi ke website toko kamu. Harus pakai yang mana?</p>
+        <div class="quiz-options">
+          <button class="quiz-opt">Claude.ai saja sudah cukup</button>
+          <button class="quiz-opt">Claude API karena perlu integrasi dan otomatisasi</button>
+          <button class="quiz-opt">Tidak bisa, Claude tidak support integrasi</button>
+          <button class="quiz-opt">ChatGPT lebih cocok untuk ini</button>
+        </div>
+      </div>
+      <div class="quiz-result"><div class="quiz-score"></div><div class="quiz-msg"></div></div>
+    </div>
+
+    <div class="fase-nav">
+      <a href="fase-4.html">
+        <span class="fn-label">← Sebelumnya</span>
+        <span class="fn-title">Fase 4: Claude untuk Coding</span>
+      </a>
+      <a href="fase-6.html" class="fn-next">
+        <span class="fn-label">Selanjutnya →</span>
+        <span class="fn-title">Fase 6: Bangun Sesuatu yang Nyata</span>
+      </a>
+    </div>
+
+  </div>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
